@@ -82,21 +82,42 @@
 <section class="slide">
   <h2>Where are we going?</h2>
   <ul>
-    <li class="slide"><h2>I. Intro to Scalatra</h2></li>
-    <li class="slide"><h2>II. Intro to WebSockets</h2></li>
-    <li class="slide"><h2>III. Intro to Akka</h2></li>
-    <li class="slide"><h2>IV. Mashup!</h2></li>
+    <li class="slide"><h3>I. Intro to Scalatra</h3></li>
+    <li class="slide"><h3>II. Intro to WebSockets</h3></li>
+    <li class="slide"><h3>III. Intro to Akka</h3></li>
+    <li class="slide"><h3>IV. Mashup!</h3></li>
   </ul>
 </section>
+
+<section class="slide">
+  <h2>Some banter</h2>
+  <h3>ScalaTypes podcast - <a href="http://scalatypes.com">http://scalatypes.com</a></h3>
+  <ul>
+    <li>
+      <h3>Episodes 22: Derek Wyatt on Akka Concurrency</h3>
+    </li>
+    <li>
+      <h3>Episodes 24: Ivan Porto Carrero on Scalatra</h3>
+    </li>
+    <li>
+      <h3>Episodes 27-28: Mathias Doenitz on Spray</h3>
+    </li>
+    <li>
+      <h3>Episodes 29: James Roper on Play!</h3>
+    </li>
+  </ul>
+  <h3>/Advertisement</h3>
+</section>
+
 
 <section class="slide">
   <h2>Warning</h2>
   <ul>
     <li class="slide">
-      <h2>This is mostly a "concepts" talk. Very little code will be shown.</h2>
+      <h3>This is mostly a "concepts" talk. Very little code will be shown.</h3>
     </li>
     <li class="slide">
-      <h2>If you want particulars, ask!</h2>
+      <h3>If you want particulars, ask!</h3>
     </li>
   </ul>
 </section>
@@ -117,11 +138,7 @@
     class HelloScalatra extends ScalatraServlet {
 
       get("/") {
-        <html>
-          <body>
-            <h1>Hello, world!</h1>
-          </body>
-        </html>
+        "Hello, world!"
       }
     }
   </pre>
@@ -130,42 +147,42 @@
 <section class="slide">
   <h2>Scalatra's philosophy: transparency</h2>
   <ul>
-    <li class="slide">No magic!</li>
-    <li class="slide">It's elephants all the way down.</li>
-    <li class="slide">More a set of libraries than a "framework".</li>
-    <li class="slide">Source code is extremely readable.</li>
+    <li class="slide"><h3>No magic!</h3></li>
+    <li class="slide"><h3>It's elephants all the way down.</h3></li>
+    <li class="slide"><h3>More a set of libraries than a "framework".</h3></li>
+    <li class="slide"><h3>Source code is extremely readable.</h3></li>
   </ul>
 </section>
 
 <section class="slide">
   <h2>Scalatra's philosophy: unintrusiveness</h2>
   <ul>
-    <li class="slide">Absolute minimum of configuration. Did you see hello world?</li>
-    <li class="slide">Not "opinionated".</li>
-    <li class="slide">No fancy build system.</li>
-    <li class="slide">Everything is modifiable via idiomatic Scala.</li>
-    <li class="slide">Integrations are all optional, and often independent.</li>
+    <li class="slide"><h3>Absolute minimum of configuration. Did you see hello world?</h3></li>
+    <li class="slide"><h3>Not "opinionated".</h3></li>
+    <li class="slide"><h3>No fancy build system.</h3></li>
+    <li class="slide"><h3>Everything is modifiable via idiomatic Scala.</h3></li>
+    <li class="slide"><h3>Integrations are all optional, and often independent.</h3></li>
   </ul>
 </section>
 
 <section class="slide">
   <h2>Scalatra's philosophy: scalability</h2>
   <ul>
-    <li class="slide">High performance out of the box.</li>
-    <li class="slide">Stateless by default. Sessions if you want them.</li>
-    <li class="slide">Async via Akka.</li>
+    <li class="slide"><h3>High performance out of the box.</h3></li>
+    <li class="slide"><h3>Stateless by default. Sessions if you want them.</h3></li>
+    <li class="slide"><h3>Async via Akka.</h3></li>
   </ul>
 </section>
 
 <section class="slide">
   <h2>The dark side of Scalatra ... </h2>
   <ul>
-    <li class="slide"><h2>Routes parameters are not typed.</h2></li>
+    <li class="slide"><h3>Routes parameters are not typed.</h3></li>
     <li class="slide">
-      <h2>Core DSL is mutable. (The DSL is a Sinatra port, so go figure.)</h2>
+      <h3>Core DSL is mutable. (The DSL is a Sinatra port, so go figure.)</h3>
     </li>
     <li class="slide">
-      <h2>Servlets</h2>
+      <h3>Servlets</h3>
       <ul>
         <li class="slide">Not as asynchronous as Netty until Servlet 3.5</li>
         <li class="slide">Some people really hate servlet containers. Why?!</li>
@@ -188,13 +205,35 @@
   <h2>HTTP history</h2>
   <ul>
     <li class="slide">
-      <h2>HTTP/1 is purely request-response.</h2>
+      <h3>HTTP/1 only has simple request-response.</h3>
     </li>
     <li class="slide">
-      <h2>HTTP/1.1 Connection: Keep-Alive.</h2>
+      <h3>HTTP/1.1</h3>
+      <ul>
+        <li class="slide">
+          <h3>Persistent connections</h3>
+        </li>
+        <li class="slide">
+          <h3>HTTP pipelining</h3>
+        </li>
+        <li class="slide">
+          <h3>Comet</h3>
+        </li>
+      </ul>
     </li>
     <li class="slide">
-      <h2>HTTP/2.0 aka SPDY will add multiplexing, prioritization, and full compression.</h2>
+      <h3>SPDY (working draft of HTTP/2.0)</h3>
+      <ul>
+        <li class="slide">
+          <h3>Multiplexing</h3>
+        </li>
+        <li class="slide">
+          <h3>Prioritization</h3>
+        </li>
+        <li class="slide">
+          <h3>Full compression</h3>
+        </li>
+      </ul>
     </li>
   </ul>
 </section>
@@ -204,20 +243,20 @@
   <h2>What are WebSockets?</h2>
   <ul>
     <li class="slide">
-      <h2>
+      <h3>
         WebSocket is a web technology providing full-duplex communications channels
         over a single TCP connection.
-      </h2>
+      </h3>
     </li>
     <li class="slide">
-      <h2>
+      <h3>
         WebSockets is an independent TCP/IP protocol not based on HTTP.
-      </h2>
+      </h3>
     </li>
     <li class="slide">
-      <h2>
+      <h3>
         Clients can be web browsers or servers.
-      </h2>
+      </h3>
     </li>
   </ul>
 </section>
@@ -226,19 +265,25 @@
   <h2>Browser support</h2>
   <ul>
     <li class="slide">
-      <h2>Firefox >= v6</h2>
+      <h3>Firefox >= v6</h3>
     </li>
     <li class="slide">
-      <h2>Chrome >= v14</h2>
+      <h3>Chrome >= v14</h3>
     </li>
     <li class="slide">
-      <h2>Internet Explorer >= v10</h2>
+      <h3>Internet Explorer >= v10</h3>
     </li>
     <li class="slide">
-      <h2>Opera >= v12.10</h2>
+      <h3>Opera >= v12.10</h3>
     </li>
     <li class="slide">
-      <h2>Yes, web browsers briefly disabled WebSockets last year, but that's over now.</h2>
+      <h3>Yes, web browsers briefly disabled WebSockets last year, but that's over now.</h3>
+    </li>
+    <li class="slide">
+      <h3>Safari not re-enabled yet</h3>
+    </li>
+    <li class="slide">
+      <h3>Not much mobile support yet</h3>
     </li>
   </ul>
 </section>
@@ -267,13 +312,13 @@
   <h2>Advantages of WebSockets</h2>
   <ul>
     <li class="slide">
-      <h2>Communication is over port 80</h2>
+      <h3>Communication is over port 80</h3>
     </li>
     <li class="slide">
-      <h2>Proxy traversal</h2>
+      <h3>Proxy traversal</h3>
     </li>
     <li class="slide">
-      <h2>Full-duplex communication</h2>
+      <h3>Full-duplex communication</h3>
       <ul>
         <li class="slide">That includes "browser push" and many other models.</li>
         <li class="slide">
@@ -283,12 +328,12 @@
       </ul>
     </li>
     <li class="slide">
-      <h2>
+      <h3>
         Reduced latency & overhead, improved scalability, compared to Comet (reverse AJAX).
-      </h2>
+      </h3>
     </li>
     <li class="slide">
-      <h2>Simpler implementation than Comet.</h2>
+      <h3>Simpler implementation than Comet.</h3>
     </li>
   </ul>
 </section>
@@ -297,10 +342,16 @@
   <h2>Disadvantages of WebSockets</h2>
   <ul>
     <li class="slide">
-      <h2>Client support isn't all there.</h2>
+      <h3>Client support isn't all there.</h3>
     </li>
     <li class="slide">
-      <h2>May encourage stateful design.</h2>
+      <h3>May encourage stateful design.</h3>
+    </li>
+    <li class="slide">
+      <h3>Lower level</h3>
+    </li>
+    <li class="slide">
+      <h3>Unfamiliar</h3>
     </li>
   </ul>
 </section>
@@ -312,6 +363,99 @@
   <h1>Section III<br>Intro to Akka</h1>
 </section>
 
+<section class="slide">
+  <h2>What is Akka?</h2>
+  <ul>
+    <li class="slide">
+      <h3>Concurrency framework</h3>
+    </li>
+    <li class="slide">
+      <h3>Increasingly integrated with Scala standard library</h3>
+    </li>
+    <li class="slide">
+      <h3>Supports many styles of concurrency</h3>
+      <ul>
+        <li class="slide"><h3>Actors</h3></li>
+        <li class="slide"><h3>Futures</h3></li>
+        <li class="slide"><h3>Agents</h3></li>
+        <li class="slide"><h3>Dataflow</h3></li>
+        <li class="slide"><h3>STM from Scala</h3></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>Actors in one slide</h2>
+  <h3>Actors are objects that ...</h3>
+  <ul>
+    <li class="slide">
+      <h3>define a method for handling messages of any type.</h3>
+    </li>
+    <li class="slide">
+      <h3>have a first-in-first-out mailbox of messages.</h3>
+    </li>
+    <li class="slide">
+      <h3>send messages to other actors asynchronously.</h3>
+    </li>
+    <li class="slide">
+      <h3>can safely maintain mutable state.</h3>
+    </li>
+    <li class="slide">
+      <h3>don't need to worry about thread scheduling, message routing, or locking.</h3>
+    </li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>Sound familiar?</h2>
+  <ul>
+    <li class="slide">
+      <h3>
+        Like the client & host on a  socket connection, actors send
+        messages whenever they wish.
+      </h3>
+    <li class="slide">
+      <h3>
+        Scalatra uses Akka to make sure socket messages are processed asynchronously.
+      </h3>
+    </li>
+    <li class="slide">
+      <h3>
+        <div>
+          Biggest difference: actors must handle messages in order.
+        </div>
+        <div class="slide">
+          That does <em>not</em> mean that the "reply" comes in the same order, like pipelining.
+        </div>
+      </h3>
+    </li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>What Akka looks like</h2>
+  <pre class="brush: scala;">
+    class MyActor extends Actor {
+
+      var count = 0
+
+      def receive = {
+        case "hi" => sender ! "and hello to you"
+
+        case Inc =>
+          count += 1
+          sender ! count
+
+        case quotesRequest: GetStockQuotes => actorOf[StockChecker] ! (quotesRequest, sender)
+      }
+    }
+
+    val ref: ActoRef = actorOf[MyActor]
+    val res: Future[Any] = ref ? Inc
+    res foreach println
+  </pre>
+</section>
 
 
 <!-- Section 4, mashup -->
@@ -321,8 +465,12 @@
 
 
 
+<!-- conclusion -->
 
-
+<section class="slide">
+  <h1>Thanks!</h1>
+  <h2>The end.</h2>
+</section>
 
 
 
