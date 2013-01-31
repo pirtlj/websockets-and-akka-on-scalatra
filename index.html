@@ -488,7 +488,8 @@
           count += 1
           sender ! count
 
-        case quotesRequest: GetStockQuotes => actorOf[StockChecker] ! (quotesRequest, sender)
+        case quotesRequest: GetStockQuotes =>
+          actorOf[StockChecker] ! (quotesRequest, sender)
       }
     }
 
