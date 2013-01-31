@@ -145,6 +145,29 @@
 </section>
 
 <section class="slide">
+  <h2>BEFORE I FORGET!</h2>
+  <ul>
+    <li class="slide"><h3>Use Scalatra version 2.2, currently in RC3.</h3></li>
+    <li class="slide">
+      <h3>
+        <a href="http://scalatra.org/2.2">
+          http://scalatra.org/2.2
+        </a>
+      </h3>
+    </li>
+    <li class="slide">
+      <h3>
+        <a href="http://www.manning.com/carrero2/">
+          Scalatra in Action
+        </a>
+        is in pre-release from Manning.
+      </h3>
+    </li>
+  </ul>
+</section>
+
+
+<section class="slide">
   <h2>Scalatra's philosophy: transparency</h2>
   <ul>
     <li class="slide"><h3>No magic!</h3></li>
@@ -495,18 +518,16 @@
   <h2>Scalatra's Atmosphere integration</h2>
   <pre class="brush: scala;">
 class ChatController extends ScalatraServlet 
-  with JValueResult with JacksonJsonSupport //let's use json!
+  with JValueResult with JacksonJsonSupport    //let's use json!
   with SessionSupport with AtmosphereSupport { //let's use atmosphere!
 
   atmosphere("/the-chat") {
     new AtmosphereClient {
-      def receive = {
+      def receive = { //this is a *partial* function, just like Akka
         case Connected =>
-          println("Client %s is connected" format uuid)
           broadcast(
             ("author" -> "Someone") ~
-            ("message" -> "joined the room")
-          )
+            ("message" -> "joined the room"))
           send("welcome!")
         case Disconnected(ClientDisconnected, cause) =>
         case Disconnected(ServerDisconnected, cause) =>
