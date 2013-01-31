@@ -491,6 +491,33 @@
 </section>
 
 
+<section class="slide">
+  <h2>Scalatra's Atmosphere integration</h2>
+  <pre class="brush: scala;">
+class ChatController extends ScalatraServlet 
+  with JValueResult with JacksonJsonSupport //let's use json!
+  with SessionSupport with AtmosphereSupport { //let's use atmosphere!
+
+  atmosphere("/the-chat") {
+    new AtmosphereClient {
+      def receive = {
+        case Connected =>
+          println("Client %s is connected" format uuid)
+          broadcast(
+            ("author" -> "Someone") ~
+            ("message" -> "joined the room")
+          )
+          send("welcome!")
+        case Disconnected(ClientDisconnected, cause) =>
+        case Disconnected(ServerDisconnected, cause) =>
+        case TextMessage(str) =>
+        case JsonMessage(json) =>
+        case BinaryMessage(array) =>
+      }
+    }
+  }
+  </pre>
+</section>
 
 
 <!-- conclusion -->
