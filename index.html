@@ -493,7 +493,7 @@
       }
     }
 
-    val ref: ActoRef = actorOf[MyActor]
+    val ref: ActorRef = actorOf[MyActor]
     val res: Future[Any] = ref ? Inc
     res foreach println
   </pre>
